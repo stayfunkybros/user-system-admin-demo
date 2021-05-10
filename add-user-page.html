@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Add new user page</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+<link href="./lib/css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/common.css">
+
+    
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="mb-4 rounded-circle border border-dark border-4" src="./img/signin-logo.jpeg" alt="" width="190"
+        height="190">
+      <h2>ユーザー新規</h2>
+      <p class="lead">新しいユーザーに作るため、下記の情報を正しくご入力ください。</p>
+    </div>
+
+    <div class="row g-5">
+      
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">個人情報の入力</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">氏名（姓）</label>
+              <input type="text" class="form-control" id="lastName" placeholder="個人" value="" required>
+              <div class="invalid-feedback">
+                Valid 氏名（姓） is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">氏名（名）</label>
+              <input type="text" class="form-control" id="firstName" placeholder="コジン" value="" required>
+              <div class="invalid-feedback">
+                Valid 氏名（名） is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">カナ（姓）</label>
+              <input type="text" class="form-control" id="lastNameKana" placeholder="情報" value="" required>
+              <div class="invalid-feedback">
+                Valid カナ（姓） is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">カナ（名）</label>
+              <input type="text" class="form-control" id="firstNameKana" placeholder="ジョウホウ" value="" required>
+              <div class="invalid-feedback">
+                Valid カナ（名） is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">登録ユーザーネーム（Eメールアドレス）</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="username" placeholder="Email" required>
+                <div class="invalid-feedback">
+                  Your Eメールアドレス is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Eメールアドレス再入力<span class="text-muted">(Optional)</span></label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="username" placeholder="Email" required>
+                <div class="invalid-feedback">
+                  Please enter the Eメールアドレス again.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">居住国</label>
+              <select class="form-select" id="country" required>
+                <option value="">選択...</option>
+                <option>日本</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">地域</label>
+              <select class="form-select" id="state" required>
+                <option value="">選択...</option>
+                <option>東京都</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">郵便番号</label>
+              <input type="text" class="form-control" id="address0" placeholder="郵便番号" required>
+              <div class="invalid-feedback">
+                Please enter your 住所.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">住所１</label>
+              <input type="text" class="form-control" id="address1" placeholder="市区町村　番地" required>
+              <div class="invalid-feedback">
+                Please enter your 住所.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">住所２<span class="text-muted">（オプション）</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="建物名、部屋番号">
+            </div>
+
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">個人情報を公開する</label>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">決済方法</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">クレジットカード</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">カードネーム</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <small class="text-muted">名義名をご入力ください</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">カードNo.</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">有効期限</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">上記内容で登録する</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="form-validation.js"></script>
+  </body>
+</html>
