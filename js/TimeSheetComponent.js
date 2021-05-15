@@ -34,7 +34,7 @@ class TimeSheetComponent extends Component {
       <td><input id="end-time-${this.props.id}" name="end-time-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
       <td><input id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
       <td><input id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-      <td><input id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
+      <td><input id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="メモ" value=""></td>
       <td>
         <button type="button" class="btn btn-sm ${this.state.isCleared ?
         'btn-outline-success">入' :
