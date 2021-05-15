@@ -14,7 +14,9 @@ class BlackWhiteButton extends Component {
 
   render () {
     return `
-      <div style='background-color: ${this.state.color?"#fff":"#000"}'>Black or White</div>
+      <div>
+        <button style="color:red;background-color:${this.state.color?'#fff':'#000'}">${this.state.color?'#fff':'#000'}</button>
+      </div>
     `
   }
 }

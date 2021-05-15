@@ -29,8 +29,7 @@ class Component {
   renderDom() {
     this.el = createDom(this.render())
     if (this.onClick) {
-      // this.el.querySelectorAll('button')[0].addEventListener('click', this.onClick.bind(this), false);
-      this.el.addEventListener('click', this.onClick.bind(this), false);
+      this.el.querySelector('button').addEventListener('click', this.onClick.bind(this), false);
     }
     return this.el;
   }
