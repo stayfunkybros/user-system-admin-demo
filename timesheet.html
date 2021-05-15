@@ -25,7 +25,7 @@
       border: 0;
       font-size: 1em;
     }
-    input {
+    input, table span {
       font-size:0.8rem !important;
     }
   </style>
@@ -67,7 +67,9 @@
           <tbody id="time-sheet-area">
             <div>
             <tr class="date-line table-warning">
-              <td><input class="form-control form-control-plaintext" type="text" readonly value="1(土)"></td>
+              <td>
+                <span>1(土)</span>
+                <input class="form-control form-control-plaintext" type="hidden" value="1(土)"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="9:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="18:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
@@ -119,27 +121,20 @@
   <script src="./js/Weekday.js"></script>
   <script src="./js/Component.js"></script>
   <script src="./js/BlackWhiteButton.js"></script>
+  <script src="./js/TimeSheetComponent.js"></script>
   <script>
     const bw = document.querySelector('#btn-bw');
     mount(new BlackWhiteButton(), bw);
-  </script>
-  <script>
-    const erase = (self) => {
-      let els = self.closest(".date-line").querySelectorAll("input[type='text']");
-      els[1].value = "";
-      els[2].value = "";
-      els[3].value = "";
-      els[4].value = "";
-      els[5].value = "";
-    }
-    const fullfill = (self) => {
-      let els = self.closest(".date-line").querySelectorAll("input[type='text']");
-      els[1].value = "9:00";
-      els[2].value = "18:00";
-      els[3].value = "1:00";
-      els[4].value = "8:00";
-      els[5].value = "";
-    }
+    mount(new BlackWhiteButton(), bw);
+
+    const test = document.querySelector('#time-sheet-area');
+    let timesheet = new TimeSheetComponent({
+      id: '20200525',
+      isWeekend: false,
+      isHoliday: false
+    });
+    mount(timesheet, test);
+
   </script>
 </body>
 
