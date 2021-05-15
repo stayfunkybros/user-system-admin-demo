@@ -17,10 +17,16 @@
     table .w-10 {
       width: 10%;
     }
+    table .w-15 {
+      width: 15%;
+    }
     input[readonly] {
       background-color:transparent !important;
       border: 0;
       font-size: 1em;
+    }
+    input {
+      font-size:0.8rem !important;
     }
   </style>
 </head>
@@ -49,13 +55,13 @@
         <table class="table table-sm">
           <thead>
             <tr class="table-dark">
-              <th class="w-10">日付</th>
-              <th class="w-10">出勤</th>
-              <th class="w-10">退勤</th>
-              <th class="w-10">休憩</th>
-              <th class="w-10">就業時間</th>
+              <th class="w-15">日付</th>
+              <th class="w-15">出勤</th>
+              <th class="w-15">退勤</th>
+              <th class="w-15">休憩</th>
+              <th class="w-15">合計</th>
               <th class="w-25">備考</th>
-              <th class="w-10">#</th>
+              <th class="w-15">#</th>
             </tr>
           </thead>
           <tbody id="time-sheet-area">
@@ -67,7 +73,7 @@
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger" type="button">削</button></td>
+              <td><button class="btn btn-danger btn-sm" type="button">削</button></td>
             </tr>
           </div>
             <div>
@@ -78,7 +84,7 @@
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success" type="button">入</button></td>
+              <td><button class="btn btn-outline-success btn-sm" type="button">入</button></td>
             </tr>
           </div>
             <tr>
@@ -88,7 +94,7 @@
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success" type="button">入</button></td>
+              <td><button class="btn btn-outline-success btn-sm" type="button">入</button></td>
             </tr>
             <tr>
               <td><input class="form-control form-control-plaintext" type="text" readonly value="4(火)"></td>
@@ -97,7 +103,7 @@
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger" type="button">削</button></td>
+              <td><button class="btn btn-danger btn-sm" type="button">削</button></td>
             </tr>
           </tbody>
         </table>
