@@ -66,45 +66,49 @@
           </thead>
           <tbody id="time-sheet-area">
             <div>
-            <tr class="table-warning">
+            <tr class="date-line table-warning">
               <td><input class="form-control form-control-plaintext" type="text" readonly value="1(土)"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="9:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="18:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger btn-sm" type="button">削</button></td>
+              <td><button class="btn btn-danger btn-sm" onclick="erase(this)" type="button">削</button></td>
             </tr>
-          </div>
+            </div>
             <div>
-            <tr class="table-warning">
+            <tr class="date-line table-warning">
               <td><input class="form-control form-control-plaintext" type="text" readonly value="2(日)"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success btn-sm" type="button">入</button></td>
+              <td><button class="btn btn-outline-success btn-sm" onclick="fullfill(this)" type="button">入</button></td>
             </tr>
-          </div>
-            <tr>
+            </div>
+            <div>
+            <tr class="date-line">
               <td><input class="form-control form-control-plaintext" type="text" readonly value="3(月)"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success btn-sm" type="button">入</button></td>
+              <td><button class="btn btn-outline-success btn-sm" onclick="fullfill(this);" type="button">入</button></td>
             </tr>
-            <tr>
+            </div>
+            <div>
+            <tr class="date-line">
               <td><input class="form-control form-control-plaintext" type="text" readonly value="4(火)"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="9:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="18:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
               <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger btn-sm" type="button">削</button></td>
+              <td><button class="btn btn-danger btn-sm" onclick="clear(this);" type="button">削</button></td>
             </tr>
+            </div>
           </tbody>
         </table>
       </div>
@@ -112,7 +116,25 @@
   </div>
   <script src="./lib/js/bootstrap.bundle.min.js"></script>
   <script src="./js/Weekday.js"></script>
-  <script src="./js/TimeSheetComponent.js"></script>
+  <!-- <script src="./js/TimeSheetComponent.js"></script> -->
+  <script>
+    const erase = (self) => {
+      let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+      els[1].value = "";
+      els[2].value = "";
+      els[3].value = "";
+      els[4].value = "";
+      els[5].value = "";
+    }
+    const fullfill = (self) => {
+      let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+      els[1].value = "9:00";
+      els[2].value = "18:00";
+      els[3].value = "1:00";
+      els[4].value = "8:00";
+      els[5].value = "";
+    }
+  </script>
 </body>
 
 </html>
