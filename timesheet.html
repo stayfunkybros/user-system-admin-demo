@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.83.1">
+  <title>Timesheet</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+  <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/common.css">
+  <!-- Custom styles for this template -->
+  <!-- <link href="form-validation.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+
+  <div class="container">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">勤怠詳細</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            2021年5月
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead>
+            <tr class="table-dark">
+              <th>日付</th>
+              <th>出勤</th>
+              <th>退勤</th>
+              <th>休憩</th>
+              <th>就業時間</th>
+              <th>備考</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody id="time-sheet-area">
+            <div>
+            <tr class="table-warning">
+              <td>1(土)</td>
+              <td>09:00</td>
+              <td>18:00</td>
+              <td>01:00</td>
+              <td>08:00</td>
+              <td></td>
+              <td><button class="btn btn-outline-danger btn-sm pt-0 pb-0">クリア<a></td>
+            </tr>
+          </div>
+            <div>
+            <tr class="table-warning">
+              <td>2(日)</td>
+              <td>09:00</td>
+              <td>18:00</td>
+              <td>01:00</td>
+              <td>08:00</td>
+              <td></td>
+              <td><button class="btn btn-outline-info btn-sm pt-0 pb-0">一括入力<a></td>
+            </tr>
+          </div>
+            <tr>
+              <td>3(月)</td>
+              <td>09:00</td>
+              <td>18:00</td>
+              <td>01:00</td>
+              <td>08:00</td>
+              <td></td>
+              <td><a href="#">一括入力<a></td>
+            </tr>
+            <tr>
+              <td>4(火)</td>
+              <td>09:00</td>
+              <td>18:00</td>
+              <td>01:00</td>
+              <td>08:00</td>
+              <td></td>
+              <td><a href="#">一括入力<a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="./lib/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/Weekday.js"></script>
+  <script src="./js/TimeSheetComponent.js"></script>
+</body>
+
+</html>
