@@ -1,0 +1,37 @@
+const createDom = (dom) => {
+  const div = document.createElement('div');
+  div.innerHTML = dom;
+  return div;
+}
+
+const mount = (component, tar) => {
+  tar.appendChild(component.renderDom())
+  component.onStateChange = (exEl, el) => {
+    tar.insertBefore(el, exEl);
+    tar.removeChild(exEl);
+  }
+}
+
+class Component {
+  constructor(props = {}) {
+    this.props = props;
+  }
+
+  setState(state) {
+    const exEl = this.el;
+    this.state = state;
+    this.el = this.renderDom();
+    if (this.onStateChange) {
+      this.onStateChange(exEl, this.el);
+    }
+  }
+
+  renderDom() {
+    this.el = createDom(this.render())
+    if (this.onClick) {
+      // this.el.querySelectorAll('button')[0].addEventListener('click', this.onClick.bind(this), false);
+      this.el.addEventListener('click', this.onClick.bind(this), false);
+    }
+    return this.el;
+  }
+}
