@@ -65,52 +65,6 @@
             </tr>
           </thead>
           <tbody id="time-sheet-area">
-            <div>
-            <tr class="date-line table-warning">
-              <td>
-                <span>1(土)</span>
-                <input class="form-control form-control-plaintext" type="hidden" value="1(土)"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="9:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="18:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger btn-sm" onclick="erase(this)" type="button">削</button></td>
-            </tr>
-            </div>
-            <div>
-            <tr class="date-line table-warning">
-              <td><input class="form-control form-control-plaintext" type="text" readonly value="2(日)"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success btn-sm" onclick="fullfill(this)" type="button">入</button></td>
-            </tr>
-            </div>
-            <div>
-            <tr class="date-line">
-              <td><input class="form-control form-control-plaintext" type="text" readonly value="3(月)"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value=""></td>
-              <td><button class="btn btn-outline-success btn-sm" onclick="fullfill(this);" type="button">入</button></td>
-            </tr>
-            </div>
-            <div>
-            <tr class="date-line">
-              <td><input class="form-control form-control-plaintext" type="text" readonly value="4(火)"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="9:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="18:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="1:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value="8:00"></td>
-              <td><input class="form-control form-control-plaintext" type="text" placeholder="備考" value="なんでもない"></td>
-              <td><button class="btn btn-danger btn-sm" onclick="erase(this);" type="button">削</button></td>
-            </tr>
-            </div>
           </tbody>
         </table>
       </div>
@@ -123,17 +77,43 @@
   <script src="./js/BlackWhiteButton.js"></script>
   <script src="./js/TimeSheetComponent.js"></script>
   <script>
-    const bw = document.querySelector('#btn-bw');
-    mount(new BlackWhiteButton(), bw);
-    mount(new BlackWhiteButton(), bw);
-
-    const test = document.querySelector('#time-sheet-area');
-    let timesheet = new TimeSheetComponent({
-      id: '20200525',
-      isWeekend: false,
-      isHoliday: false
-    });
-    mount(timesheet, test);
+    const timesheet = document.querySelector('#time-sheet-area');
+    let calender = [
+      {id: '20210501', isWeekend: true, isHoliday: false},
+      {id: '20210502', isWeekend: true, isHoliday: false},
+      {id: '20210503', isWeekend: false, isHoliday: true},
+      {id: '20210504', isWeekend: false, isHoliday: true},
+      {id: '20210505', isWeekend: false, isHoliday: true},
+      {id: '20210506', isWeekend: false, isHoliday: false},
+      {id: '20210507', isWeekend: false, isHoliday: false},
+      {id: '20210508', isWeekend: true, isHoliday: false},
+      {id: '20210509', isWeekend: true, isHoliday: false},
+      {id: '20210510', isWeekend: false, isHoliday: false},
+      {id: '20210511', isWeekend: false, isHoliday: false},
+      {id: '20210512', isWeekend: false, isHoliday: false},
+      {id: '20210513', isWeekend: false, isHoliday: false},
+      {id: '20210514', isWeekend: false, isHoliday: false},
+      {id: '20210515', isWeekend: true, isHoliday: false},
+      {id: '20210516', isWeekend: true, isHoliday: false},
+      {id: '20210517', isWeekend: false, isHoliday: false},
+      {id: '20210518', isWeekend: false, isHoliday: false},
+      {id: '20210519', isWeekend: false, isHoliday: false},
+      {id: '20210520', isWeekend: false, isHoliday: false},
+      {id: '20210521', isWeekend: false, isHoliday: false},
+      {id: '20210522', isWeekend: true, isHoliday: false},
+      {id: '20210523', isWeekend: true, isHoliday: false},
+      {id: '20210524', isWeekend: false, isHoliday: false},
+      {id: '20210525', isWeekend: false, isHoliday: false},
+      {id: '20210526', isWeekend: false, isHoliday: false},
+      {id: '20210527', isWeekend: false, isHoliday: false},
+      {id: '20210528', isWeekend: false, isHoliday: false},
+      {id: '20210529', isWeekend: true, isHoliday: false},
+      {id: '20210530', isWeekend: true, isHoliday: false},
+      {id: '20210531', isWeekend: false, isHoliday: false}
+    ];
+    calender.forEach(day => {
+      mount(new TimeSheetComponent(day), timesheet);
+    })
 
   </script>
 </body>
