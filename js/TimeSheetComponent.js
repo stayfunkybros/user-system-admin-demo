@@ -25,8 +25,10 @@ class TimeSheetComponent extends Component {
     let m = this.props.id.substring(4, 6);
     let d = this.props.id.substring(6, 8);
     let day = new Date(y, m - 1, d);
+    let weekends = [Weekday['日'], Weekday['土']];
+    
     return `<table class="fix-bug-line">
-    <tr class="date-line ${this.props.isWeekend ?
+    <tr class="date-line ${weekends.includes(day.getDay()) ?
        'table-warning' : this.props.isHoliday ?
        'table-danger' : ''}">
       <td>
