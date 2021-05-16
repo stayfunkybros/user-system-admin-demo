@@ -8,3 +8,5 @@ var Weekday;
   Weekday[Weekday['金'] = 5] = '金';
   Weekday[Weekday['土'] = 6] = '土';
 })(Weekday || (Weekday = {}));
+
+export default Weekday;

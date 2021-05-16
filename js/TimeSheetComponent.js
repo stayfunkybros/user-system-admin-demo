@@ -1,3 +1,6 @@
+import { Component } from './Component.js';
+import Weekday from './Weekday.js';
+
 class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
@@ -75,3 +78,6 @@ class TimeSheetComponent extends Component {
   }
 
 }
+
+export { TimeSheetComponent };
+export * from './Component.js';

@@ -71,10 +71,10 @@
     </main>
   </div>
   <script src="./lib/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/Weekday.js"></script>
-  <script src="./js/Component.js"></script>
-  <script src="./js/TimeSheetComponent.js"></script>
-  <script>
+  <script type="module" src="./js/TimeSheetComponent.js"></script>
+  <script type="module">
+    import { TimeSheetComponent, mount } from './js/TimeSheetComponent.js';
+
     const timesheet = document.querySelector('#time-sheet-area');
     let calender = [
       {id: '20210501', isWeekend: true, isHoliday: false},

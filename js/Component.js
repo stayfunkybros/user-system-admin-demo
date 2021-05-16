@@ -35,3 +35,5 @@ class Component {
     return this.el;
   }
 }
+
+export { Component, createDom, mount };
