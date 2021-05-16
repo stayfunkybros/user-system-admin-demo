@@ -80,4 +80,4 @@ class TimeSheetComponent extends Component {
 }
 
 export { TimeSheetComponent };
-export * from './Component.js';
+export { mount } from './Component.js';
