@@ -33,12 +33,11 @@
 
 <body>
 
-
   <div class="container">
     <main>
       <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">勤怠詳細</h1>
+        <h1 class="h2">今月の勤怠詳細</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -46,7 +45,7 @@
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
             <span data-feather="calendar"></span>
-            2021年5月
+            <span id="curDateYM"></span>
           </button>
         </button>
         </div>
@@ -76,43 +75,32 @@
     import { TimeSheetComponent, mount } from './js/TimeSheetComponent.js';
 
     const timesheet = document.querySelector('#time-sheet-area');
-    let calender = [
-      {id: '20210501'},
-      {id: '20210502'},
-      {id: '20210503', isHoliday: true},
-      {id: '20210504', isHoliday: true},
-      {id: '20210505', isHoliday: true},
-      {id: '20210506'},
-      {id: '20210507'},
-      {id: '20210508'},
-      {id: '20210509'},
-      {id: '20210510'},
-      {id: '20210511'},
-      {id: '20210512'},
-      {id: '20210513'},
-      {id: '20210514'},
-      {id: '20210515'},
-      {id: '20210516'},
-      {id: '20210517'},
-      {id: '20210518'},
-      {id: '20210519'},
-      {id: '20210520'},
-      {id: '20210521'},
-      {id: '20210522'},
-      {id: '20210523'},
-      {id: '20210524'},
-      {id: '20210525'},
-      {id: '20210526'},
-      {id: '20210527'},
-      {id: '20210528'},
-      {id: '20210529'},
-      {id: '20210530'},
-      {id: '20210531'}
-    ];
-    calender.forEach(day => {
-      mount(new TimeSheetComponent(day), timesheet);
-    })
+    fetch('https://holidays-jp.github.io/api/v1/2021/date.json')
+      .then(res => res.json()).then(holidays => initCal(holidays)).catch(err => alert('Holiday Info ERROR:' + err));
+    function initCal(hd) {
+      let calender = [];
 
+      let curDate = new Date();
+      let curMonth = curDate.getMonth() + 1;
+      let curYear = curDate.getFullYear();
+
+      document.getElementById('curDateYM').textContent = curYear + '年' + curMonth + '月';
+
+      let days = new Date(curYear, curMonth, 0).getDate();
+      for (let i = 1; i <= days; i++) {
+        let d = {};
+        d.id = `${curYear}-${curMonth}-${("0" + i).slice(-2)}`;
+        if (hd[d.id]) {
+          d.isHoliday = true;
+        }
+        d.id = d.id.replace(/-/g,'');
+        calender.push(d);
+      }
+
+      calender.forEach(day => {
+        mount(new TimeSheetComponent(day), timesheet);
+      })
+    }
   </script>
 </body>
 
