@@ -80,7 +80,8 @@ class TimeSheetComponent extends Component {
     els[4].readOnly = false;
 
     $(function () {
-      $(els).timepicker();
+      let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');
+      $(tp).timepicker();
     });
   }
 
