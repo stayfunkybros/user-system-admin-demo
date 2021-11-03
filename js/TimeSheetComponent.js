@@ -62,6 +62,7 @@ class TimeSheetComponent extends Component {
     els[2].readOnly = true;
     els[3].readOnly = true;
     els[4].readOnly = true;
+
   }
 
   fullfill(self) {
@@ -77,6 +78,10 @@ class TimeSheetComponent extends Component {
     els[2].readOnly = false;
     els[3].readOnly = false;
     els[4].readOnly = false;
+
+    $(function () {
+      $(els).timepicker();
+    });
   }
 
 }

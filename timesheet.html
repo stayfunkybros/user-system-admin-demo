@@ -72,7 +72,7 @@
   </div>
 
   <script src="./lib/js/jquery.slim.min.js"></script>
-  <script src="./lib/js/timepicker.min.js"></script>
+  <script src="./lib/js/timepicker.js"></script>
   <script src="./lib/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="./js/TimeSheetComponent.js"></script>
   <script type="module">
@@ -104,11 +104,7 @@
       calender.forEach(day => {
         mount(new TimeSheetComponent(day), timesheet);
       })
-
-      $(function () {
-        $('.bs-timepicker').timepicker();
-      });
-
+      
     }
   </script>
 </body>
