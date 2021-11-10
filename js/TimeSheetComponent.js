@@ -5,18 +5,20 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isCleared: true
+      swapNext: 0 /* 0:入 1:削 2:休 */
     };
   }
 
   onClick() {
     this.setState({
-      isCleared: !this.state.isCleared
+      swapNext: (++this.state.swapNext) % 3
     });
-    if (this.state.isCleared) { // after setSte()
-      this.erase(this.el);
-    } else {
+    if (this.state.swapNext === 0) { // clicked:2 -> 0
+      this.off(this.el);
+    } else if (this.state.swapNext === 1) { // clicked:0 -> 1
       this.fullfill(this.el);
+    } else {
+      this.erase(this.el);
     }
   }
 
@@ -41,9 +43,10 @@ class TimeSheetComponent extends Component {
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
       <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
       <td>
-        <button type="button" class="btn btn-sm ${this.state.isCleared ?
-        'btn-outline-success">入' :
-        'btn-danger">削'}</button>
+        <button type="button" class="btn btn-sm ${this.state.swapNext === 0 ?
+          'btn-outline-success">入' : this.state.swapNext === 1 ?
+        'btn-danger">削' :
+        'btn-warning">休' }</button>
       </div>
     </tr>
     </table>`;
@@ -59,10 +62,20 @@ class TimeSheetComponent extends Component {
     els[4].readOnly = true;
   }
 
+  off(self) {
+    let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+    els[0].value = "00:00";
+    els[1].value = "00:00";
+    els[2].value = "00:00";
+    els[3].value = "00:00";
+    els[4].value = "休暇一日";
+    els[4].readOnly = true;
+  }
+
   fullfill(self) {
     let els = self.closest(".date-line").querySelectorAll("input[type='text']");
-    els[0].value = "9:00";
-    els[1].value = "18:00";
+    els[0].value = "9:30";
+    els[1].value = "18:30";
     els[2].value = "1:00";
     els[3].value = "8:00";
     els[4].value = "";
