@@ -56,13 +56,6 @@ class TimeSheetComponent extends Component {
     els[2].value = "";
     els[3].value = "";
     els[4].value = "";
-
-    els[0].readOnly = true;
-    els[1].readOnly = true;
-    els[2].readOnly = true;
-    els[3].readOnly = true;
-    els[4].readOnly = true;
-
   }
 
   fullfill(self) {
@@ -72,12 +65,6 @@ class TimeSheetComponent extends Component {
     els[2].value = "1:00";
     els[3].value = "8:00";
     els[4].value = "";
-
-    els[0].readOnly = false;
-    els[1].readOnly = false;
-    els[2].readOnly = false;
-    els[3].readOnly = false;
-    els[4].readOnly = false;
 
     $(function () {
       let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');
