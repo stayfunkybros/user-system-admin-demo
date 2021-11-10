@@ -122,12 +122,23 @@
   </script>
   <script type="module">
     import { encodeJson } from './js/Codify.js';
-
+    let formData = {
+      // e.g. '20211101': {'f':'08:13', 't':'19:00', 'r':'01:00', 'm':'meishi'}
+    };
     $("#share").click(function share() {
-      let obj = {};
-      let shardLink = encodeJson(obj);
+      $('.date-line').each(function() {
+        let d = $(this).find('input:hidden').first().val();
+        if(d !== '8') {
+          let tp = $(this).find('input:not(:hidden)');
+          let sfd = {};
+          sfd.f = tp[0].value, sfd.t = tp[1].value, sfd.r = tp[2].value, sfd.m = tp[4].value;
+          formData[d] = sfd;
+        }
+      });
+      let obj = formData;
+      let shardLink = window.location.href.split('?')[0] + '?s=' + encodeJson(obj);
       navigator.clipboard.writeText(shardLink)
-        .them(() => alert('Copied shared link to clipboard.'))
+        .then(() => alert('Copied shared link to clipboard.'))
         .catch((e) => alert('Failed to copy shared link.'))
     });
   </script>
