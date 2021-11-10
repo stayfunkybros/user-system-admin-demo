@@ -1,7 +1,6 @@
 const createDom = (dom) => {
   const div = document.createElement('div');
   div.innerHTML = dom;
-  // console.log("innerHtml : "+div.innerHTML); // bugging innerHtml missing <tr> <td> 
   return div.querySelector('tr') || div.firstElementChild || div || null;
 }
 
