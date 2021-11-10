@@ -80,7 +80,8 @@
     import { TimeSheetComponent, mount } from './js/TimeSheetComponent.js';
     import { parseToken } from './js/Codify.js';
 
-    let p = (new URL(document.location)).searchParams.get('s').replace(/\s/g, '+'); // TODO: donnut why replace, but fixed 
+    let p = (new URL(document.location)).searchParams.get('s');
+    p = p && p.replace(/\s/g, '+'); // TODO: donnut why replace, but fixed 
     let formData = p ? parseToken(p) : null;
 
     const timesheet = document.querySelector('#time-sheet-area');
