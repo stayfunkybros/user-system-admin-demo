@@ -33,13 +33,13 @@ class TimeSheetComponent extends Component {
        'table-warning text-danger' : ''}">
       <td>
         <span>${day.getDate()}(${Weekday[day.getDay()]})</span>
-        <input id="${this.props.id}" name="date-today-${this.props.id}" class="form-control form-control-plaintext" type="hidden" value="20210501">
+        <input id="${this.props.id}" name="date-today-${this.props.id}" class="form-control form-control-plaintext" type="hidden" value="${this.props.id}">
       </td>
-      <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value=""></td>
-      <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value=""></td>
-      <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value=""></td>
+      <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.from || ''}"></td>
+      <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.to || ''}"></td>
+      <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.rest || ''}"></td>
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-      <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="メモ" value=""></td>
+      <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
       <td>
         <button type="button" class="btn btn-sm ${this.state.isCleared ?
         'btn-outline-success">入' :
@@ -56,6 +56,7 @@ class TimeSheetComponent extends Component {
     els[2].value = "";
     els[3].value = "";
     els[4].value = "";
+    els[4].readOnly = true;
   }
 
   fullfill(self) {
@@ -65,6 +66,7 @@ class TimeSheetComponent extends Component {
     els[2].value = "1:00";
     els[3].value = "8:00";
     els[4].value = "";
+    els[4].readOnly = false;
 
     $(function () {
       let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');

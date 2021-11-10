@@ -41,7 +41,7 @@
         <h1 class="h2">勤怠詳細</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="share">Share</button>
             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">Export</button>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -75,12 +75,17 @@
   <script src="./lib/js/timepicker.js"></script>
   <script src="./lib/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="./js/TimeSheetComponent.js"></script>
+  <script type="module" src="./js/Codify.js"></script>
   <script type="module">
     import { TimeSheetComponent, mount } from './js/TimeSheetComponent.js';
+    import { parseToken } from './js/Codify.js';
+
+    let p = (new URL(document.location)).searchParams.get('s').replace(/\s/g, '+'); // TODO: donnut why replace, but fixed 
+    let formData = p ? parseToken(p) : null;
 
     const timesheet = document.querySelector('#time-sheet-area');
     fetch('https://holidays-jp.github.io/api/v1/2021/date.json')
-      .then(res => res.json()).then(holidays => initCal(holidays)).catch(err => alert('Holiday Info ERROR:' + err));
+      .then(res => res.json()).then(holidays => initCal(holidays)).catch(err => alert('Initial Calander Getting ERROR:' + err));
     function initCal(hd) {
       let calender = [];
 
@@ -98,6 +103,14 @@
           d.isHoliday = true;
         }
         d.id = d.id.replace(/-/g,'');
+        if (formData && formData[d.id]) {
+          let fd = formData[d.id];
+          let f = fd.f || '';
+          let t = fd.t || '';
+          let r = fd.r || '';
+          let m = fd.m || '';
+          d.from = f, d.to = t, d.rest = r, d.memo = m;
+        }
         calender.push(d);
       }
 
@@ -106,6 +119,17 @@
       })
       
     }
+  </script>
+  <script type="module">
+    import { encodeJson } from './js/Codify.js';
+
+    $("#share").click(function share() {
+      let obj = {};
+      let shardLink = encodeJson(obj);
+      navigator.clipboard.writeText(shardLink)
+        .them(() => alert('Copied shared link to clipboard.'))
+        .catch((e) => alert('Failed to copy shared link.'))
+    });
   </script>
 </body>
 
