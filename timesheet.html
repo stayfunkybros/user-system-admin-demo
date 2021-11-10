@@ -81,7 +81,7 @@
     import { parseToken } from './js/Codify.js';
 
     let p = (new URL(document.location)).searchParams.get('s');
-    p = p && p.replace(/\s/g, '+'); // TODO: donnut why replace, but fixed 
+    p = p && p.replace(/\s/g, '+'); // TODO: Don't know why replaced, just fixed...
     let formData = p ? parseToken(p) : null;
 
     const timesheet = document.querySelector('#time-sheet-area');
