@@ -29,8 +29,8 @@ class TimeSheetComponent extends Component {
     
     return `<table class="fix-bug-line">
     <tr class="date-line ${weekends.includes(day.getDay()) ?
-       'table-primary' : this.props.isHoliday ?
-       'table-success' : ''}">
+       'table-info text-primary' : this.props.isHoliday ?
+       'table-warning text-danger' : ''}">
       <td>
         <span>${day.getDate()}(${Weekday[day.getDay()]})</span>
         <input id="${this.props.id}" name="date-today-${this.props.id}" class="form-control form-control-plaintext" type="hidden" value="20210501">
