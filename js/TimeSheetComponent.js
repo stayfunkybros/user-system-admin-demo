@@ -5,7 +5,7 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapNext: 0 /* 0:入 1:削 2:休 */
+      swapNext: props.btn || 0 /* 0:入 1:削 2:休 */
     };
   }
 
@@ -58,10 +58,11 @@ class TimeSheetComponent extends Component {
         class="form-control form-control-plaintext" 
         type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
       <td>
-        <button type="button" class="btn btn-sm ${this.state.swapNext === 0 ?
-          'btn-success">入' : this.state.swapNext === 1 ?
-        'btn-danger">削' :
-        'btn-warning">休' }</button>
+        <button type="button" value="${this.state.swapNext}"
+          class="btn btn-sm ${this.state.swapNext === 0 ?
+            'btn-success">入' : this.state.swapNext === 1 ?
+              'btn-danger">削' :
+              'btn-warning">休' }</button>
       </div>
     </tr>
     </table>`;

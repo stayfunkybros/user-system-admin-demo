@@ -116,7 +116,8 @@
           let r = fd.r || '';
           let s = fd.s || '';
           let m = fd.m || '';
-          d.from = f, d.to = t, d.rest = r, d.total = s, d.memo = m;
+          let b = fd.b || 0;
+          d.from = f, d.to = t, d.rest = r, d.total = s, d.memo = m, d.btn = b;
         }
         calender.push(d);
       }
@@ -141,6 +142,7 @@
           let tp = $(this).find('input:not(:hidden)');
           let sfd = {};
           sfd.f = tp[0].value, sfd.t = tp[1].value, sfd.r = tp[2].value, sfd.s = tp[3].value, sfd.m = tp[4].value;
+          sfd.b = $(this).find('button').val() * 1;
           formData[d] = sfd;
         }
       });
