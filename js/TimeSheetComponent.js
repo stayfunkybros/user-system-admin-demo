@@ -53,13 +53,13 @@ class TimeSheetComponent extends Component {
         type="text" placeholder="hh:mm" value="${this.props.rest || ''}"></td>
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" 
         class="form-control form-control-plaintext daily-total-times" 
-        type="text" placeholder="hh:mm" value="${this.props.total || ''}"></td>
+        type="text" placeholder="hh:mm" value="${this.props.total || '00:00'}"></td>
       <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" 
         class="form-control form-control-plaintext" 
         type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
       <td>
         <button type="button" class="btn btn-sm ${this.state.swapNext === 0 ?
-          'btn-outline-success">入' : this.state.swapNext === 1 ?
+          'btn-success">入' : this.state.swapNext === 1 ?
         'btn-danger">削' :
         'btn-warning">休' }</button>
       </div>
