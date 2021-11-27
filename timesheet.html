@@ -114,8 +114,9 @@
           let f = fd.f || '';
           let t = fd.t || '';
           let r = fd.r || '';
+          let s = fd.s || '';
           let m = fd.m || '';
-          d.from = f, d.to = t, d.rest = r, d.memo = m;
+          d.from = f, d.to = t, d.rest = r, d.total = s, d.memo = m;
         }
         calender.push(d);
       }
@@ -123,13 +124,15 @@
       calender.forEach(day => {
         mount(new TimeSheetComponent(day), timesheet);
       })
+
+      if (formData) { $(".bs-timepicker")[0].dispatchEvent(new Event("change")); }
       
     }
   </script>
   <script type="module">
     import { encodeJson } from './js/Codify.js';
     let formData = {
-      // e.g. '20211101': {'f':'08:13', 't':'19:00', 'r':'01:00', 'm':'meishi'}
+      // e.g. '20211101': {'f':'08:13', 't':'19:00', 'r':'01:00', 's':'8:00', 'm':'meishi'}
     };
     $("#share").click(function share() {
       $('.date-line').each(function() {
@@ -137,7 +140,7 @@
         if(d !== '8') {
           let tp = $(this).find('input:not(:hidden)');
           let sfd = {};
-          sfd.f = tp[0].value, sfd.t = tp[1].value, sfd.r = tp[2].value, sfd.m = tp[4].value;
+          sfd.f = tp[0].value, sfd.t = tp[1].value, sfd.r = tp[2].value, sfd.s = tp[3].value, sfd.m = tp[4].value;
           formData[d] = sfd;
         }
       });

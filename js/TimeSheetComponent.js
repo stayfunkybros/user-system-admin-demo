@@ -20,6 +20,11 @@ class TimeSheetComponent extends Component {
     } else {
       this.erase(this.el);
     }
+    this.reCalc(this.el);
+  }
+
+  onChange() {
+    this.reCalc(this.el);
   }
 
   render() {
@@ -37,11 +42,21 @@ class TimeSheetComponent extends Component {
         <span>${day.getDate()}(${Weekday[day.getDay()]})</span>
         <input id="${this.props.id}" name="date-today-${this.props.id}" class="form-control form-control-plaintext" type="hidden" value="${this.props.id}">
       </td>
-      <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.from || ''}"></td>
-      <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.to || ''}"></td>
-      <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" class="form-control form-control-plaintext bs-timepicker" type="text" placeholder="hh:mm" value="${this.props.rest || ''}"></td>
-      <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="hh:mm" value=""></td>
-      <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" class="form-control form-control-plaintext" type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
+      <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" 
+        class="form-control form-control-plaintext bs-timepicker" 
+        type="text" placeholder="hh:mm" value="${this.props.from || ''}"></td>
+      <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" 
+        class="form-control form-control-plaintext bs-timepicker" 
+        type="text" placeholder="hh:mm" value="${this.props.to || ''}"></td>
+      <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" 
+        class="form-control form-control-plaintext bs-timepicker" 
+        type="text" placeholder="hh:mm" value="${this.props.rest || ''}"></td>
+      <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" 
+        class="form-control form-control-plaintext daily-total-times" 
+        type="text" placeholder="hh:mm" value="${this.props.total || ''}"></td>
+      <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" 
+        class="form-control form-control-plaintext" 
+        type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
       <td>
         <button type="button" class="btn btn-sm ${this.state.swapNext === 0 ?
           'btn-outline-success">入' : this.state.swapNext === 1 ?
@@ -50,6 +65,26 @@ class TimeSheetComponent extends Component {
       </div>
     </tr>
     </table>`;
+  }
+
+  reCalc(self) {
+    let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+    const x = (t) => (t[0] * 60 + t[1] * 1);
+    const t_f = (m) => {
+      return `${("0" + Math.floor(m / 60)).substr(-2)}:${("0" + (m % 60)).substr(-2)}`;
+    };
+    let s = x(els[0].value.split(':'));
+    let e = x(els[1].value.split(':'));
+    let o = x(els[2].value.split(':'));
+    let total = e - s - o;
+    els[3].value = total > 0 ? t_f(total) : "00:00";
+
+    let totals = 0;
+    [...document.getElementsByClassName('daily-total-times')].forEach(element => {
+      if (!element.value) return;
+      totals = totals + x(element.value.split(':'));
+    });
+    document.getElementById('month-total').textContent = t_f(totals);
   }
 
   erase(self) {

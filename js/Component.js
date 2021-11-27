@@ -31,6 +31,10 @@ class Component {
     if (this.onClick) {
       this.el.querySelector('button').addEventListener('click', this.onClick.bind(this), false);
     }
+    if (this.onChange) {
+      [...this.el.querySelectorAll('.bs-timepicker')].forEach(element => 
+        element.addEventListener('change', this.onChange.bind(this), false));
+    }
     return this.el;
   }
 }
