@@ -74,7 +74,7 @@ class TimeSheetComponent extends Component {
       return `${("0" + Math.floor(m / 60)).substr(-2)}:${("0" + (m % 60)).substr(-2)}`;
     };
     const t_fm = (m) => {
-      return `${Math.floor(m / 60)}時間　${m % 60}分`;
+      return `${Math.floor(m / 60)}時間 ${m % 60}分`;
     };
     let s = x(els[0].value.split(':'));
     let e = x(els[1].value.split(':'));
