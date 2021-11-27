@@ -70,21 +70,24 @@ class TimeSheetComponent extends Component {
   reCalc(self) {
     let els = self.closest(".date-line").querySelectorAll("input[type='text']");
     const x = (t) => (t[0] * 60 + t[1] * 1);
-    const t_f = (m) => {
+    const t_fd = (m) => {
       return `${("0" + Math.floor(m / 60)).substr(-2)}:${("0" + (m % 60)).substr(-2)}`;
+    };
+    const t_fm = (m) => {
+      return `${Math.floor(m / 60)}時間　${m % 60}分`;
     };
     let s = x(els[0].value.split(':'));
     let e = x(els[1].value.split(':'));
     let o = x(els[2].value.split(':'));
     let total = e - s - o;
-    els[3].value = total > 0 ? t_f(total) : "00:00";
+    els[3].value = total > 0 ? t_fd(total) : "00:00";
 
     let totals = 0;
     [...document.getElementsByClassName('daily-total-times')].forEach(element => {
       if (!element.value) return;
       totals = totals + x(element.value.split(':'));
     });
-    document.getElementById('month-total').textContent = t_f(totals);
+    document.getElementById('month-total').textContent = t_fm(totals);
   }
 
   erase(self) {
