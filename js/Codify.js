@@ -26,11 +26,20 @@
 // }
 
 const parseToken = (token) => {
-  return JSON.parse(decodeURIComponent(escape(atob(token))));
+  try {
+    return JSON.parse(decodeURIComponent(escape(atob(token))));
+  } catch (e) {
+    return null;
+  }
 }
 
 const encodeJson = (obj) => {
-  return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+  try {
+    return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+  } catch (e) {
+    return null
+  }
+
 }
 
 export { parseToken, encodeJson }

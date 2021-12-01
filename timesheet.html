@@ -85,23 +85,25 @@
     import { TimeSheetComponent, mount } from './js/TimeSheetComponent.js';
     import { parseToken } from './js/Codify.js';
 
-    let p = (new URL(document.location)).searchParams.get('s');
+    let url = (new URL(document.location)).searchParams;
+    let p = url.get('s');
     p = p && p.replace(/\s/g, '+'); // TODO: Don't know why replaced, just fixed...
     let formData = p ? parseToken(p) : null;
+    let curDate = (d => (d.length === 8) ? d : (new Date()).toISOString().slice(0,10).replace(/-/g,""))
+                    ((formData && Object.keys(formData)[0]) || `${url.get('d') || ''}01`.substr(0, 8));
+    let curMonth = curDate.substr(4, 2);
+    let curYear = curDate.substr(0, 4);
 
     const timesheet = document.querySelector('#time-sheet-area');
-    fetch('https://holidays-jp.github.io/api/v1/2021/date.json')
+    fetch(`https://holidays-jp.github.io/api/v1/${curYear}/date.json`)
       .then(res => res.json()).then(holidays => initCal(holidays)).catch(err => alert('Initial Calander Getting ERROR:' + err));
     function initCal(hd) {
       let calender = [];
 
-      let curDate = new Date();
-      let curMonth = curDate.getMonth() + 1;
-      let curYear = curDate.getFullYear();
-
-      document.getElementById('curDateYM').textContent = curYear + '年' + curMonth + '月';
-
-      let days = new Date(curYear, curMonth, 0).getDate();
+      let d_Day = new Date(curYear, curMonth, 0);
+      document.getElementById('curDateYM').textContent = d_Day.getFullYear() + '年' + (d_Day.getMonth() + 1) + '月';
+      
+      let days = d_Day.getDate();
       for (let i = 1; i <= days; i++) {
         let d = {};
         d.id = `${curYear}-${curMonth}-${("0" + i).slice(-2)}`;
