@@ -48,8 +48,8 @@
               <span id="curDateYM"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a id="nxtDateYM" class="dropdown-item">次月にする</a></li>
-              <li><a id="preDateYM" class="dropdown-item">前月</a></li>
+              <li><a id="preDateYM" class="dropdown-item">前一月にする</a></li>
+              <li><a href="./timesheet.html" class="dropdown-item">今月</a></li>
             </ul>
           </div>
         </button>
@@ -107,10 +107,8 @@
 
       let d_Day = new Date(curYear, curMonth, 0);
       document.getElementById('curDateYM').textContent = d_Day.getFullYear() + '年' + (d_Day.getMonth() + 1) + '月';
-      let dDp1m = new Date(curYear, curMonth + 1, 0);
-      document.getElementById('nxtDateYM').href = `/user-system-admin-demo/timesheet.html?d=${dDp1m.getFullYear()}${('0' + (dDp1m.getMonth() + 1)).substr(-2)}`;
       let dDm1m = new Date(curYear, curMonth - 1, 0);
-      document.getElementById('preDateYM').href = `/user-system-admin-demo/timesheet.html?d=${dDm1m.getFullYear()}${('0' + (dDm1m.getMonth() + 1)).substr(-2)}`;
+      document.getElementById('preDateYM').href = `./timesheet.html?d=${dDm1m.getFullYear()}${('0' + (dDm1m.getMonth() + 1)).substr(-2)}`;
       
       let days = d_Day.getDate();
       for (let i = 1; i <= days; i++) {
