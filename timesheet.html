@@ -39,7 +39,7 @@
 
 <body>
 
-  <header class="container sticky-top bg-white">
+  <header class="container bg-white">
     <div
       class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">勤怠詳細</h1>
@@ -167,7 +167,6 @@
         .then(() => alert('Copied shared link to clipboard.'))
         .catch((e) => alert('Failed to copy shared link.'))
     });
-    window.onbeforeprint = () => window.scrollTo(0, 0);
   </script>
 </body>
 
