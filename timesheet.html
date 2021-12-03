@@ -39,14 +39,14 @@
 
 <body>
 
-  <header class="container bg-white">
+  <header class="container sticky-top bg-white">
     <div
       class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">勤怠詳細</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group btn-group-sm me-2">
           <button type="button" class="btn btn-sm btn-outline-secondary" id="share">Share</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">Export</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print();">Export</button>
         </div>
         <div class="btn-group btn-group-sm dropdown">
           <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
@@ -167,6 +167,7 @@
         .then(() => alert('Copied shared link to clipboard.'))
         .catch((e) => alert('Failed to copy shared link.'))
     });
+    window.onbeforeprint = () => window.scrollTo(0, 0);
   </script>
 </body>
 
