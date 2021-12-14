@@ -16,8 +16,39 @@
   <!-- Custom styles for this template -->
   <!-- <link href="form-validation.css" rel="stylesheet"> -->
   <style>
-@page {size:auto;margin:0mm auto;}
-@media print{body{width:27.8cm;height:29cm;margin:13mm 2mm;}}
+    @page {
+      size: auto;
+      margin: 0mm auto;
+    }
+
+    @media print {
+      body {
+        width: 27.8cm;
+        height: 29cm;
+        margin: 13mm 2mm;
+      }
+    
+      .lyt-print-with-name {
+        visibility: visible !important;
+        opacity: 0.4;
+        color: #555;
+      }
+      
+    }
+
+    .lyt-print-with-name {
+      visibility: hidden;
+    }
+    
+    .lyt-printer::before {
+      content: "勤怠詳細 ";
+      display: inline;
+      position: relative;
+      font-size: 1.2em;
+      visibility: visible;
+      opacity: 1;
+    }
+
     table .w-10 {
       width: 10%;
     }
@@ -44,7 +75,7 @@
   <header class="container bg-white">
     <div
       class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">勤怠詳細</h1>
+      <h1 class="h3 lyt-printer"><span class="lyt-print-with-name">山田 電気</span></h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group btn-group-sm me-2">
           <button type="button" class="btn btn-sm btn-outline-secondary" id="share">Share</button>
@@ -88,7 +119,8 @@
     <h6 class="h6">今月の勤務時間：<span id="month-total">0時間 0分</span></h6>
   </div>
   <footer class="mb-2 text-muted text-center text-small">
-    <p class="mb-1" style="font-size: 0.5em">&copy; 2021 <a class="text-muted" href="https://langyutech.jp/company.html">LangYuTech Co.,Ltd.</a>
+    <p class="mb-1" style="font-size: 0.5em">&copy; 2021 <a class="text-muted"
+        href="https://langyutech.jp/company.html">LangYuTech Co.,Ltd.</a>
   </footer>
 
   <script src="./lib/js/jquery.slim.min.js"></script>
