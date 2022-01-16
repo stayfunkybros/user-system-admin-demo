@@ -33,7 +33,9 @@ class TimeSheetComponent extends Component {
     let d = this.props.id.substring(6, 8);
     let day = new Date(y, m - 1, d);
     let weekends = [Weekday['日'], Weekday['土']];
-    
+    // <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" 
+    //     class="form-control form-control-plaintext" 
+    //     type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
     return `<table class="fix-bug-line">
     <tr class="date-line ${weekends.includes(day.getDay()) ?
        'table-info text-primary' : this.props.isHoliday ?
@@ -54,9 +56,12 @@ class TimeSheetComponent extends Component {
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" 
         class="form-control form-control-plaintext daily-total-times" 
         type="text" placeholder="hh:mm" value="${this.props.total || '00:00'}"></td>
-      <td><input readonly id="sth-else-${this.props.id}" name="sth-else-${this.props.id}" 
-        class="form-control form-control-plaintext" 
-        type="text" placeholder="メモ" value="${this.props.memo || ''}"></td>
+      <td><select id="sth-else-${this.props.id}" class="form-select form-select-sm">
+        <option value="0">-</option>
+        <option value="1">有休</option>
+        <option value="2">振休</option>
+        <option value="3">休出</option>
+        </select></td>
       <td>
         <button type="button" value="${this.state.swapNext}"
           class="btn btn-sm ${this.state.swapNext === 0 ?
