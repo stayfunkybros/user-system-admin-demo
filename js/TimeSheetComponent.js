@@ -102,8 +102,8 @@ class TimeSheetComponent extends Component {
     els[1].value = "";
     els[2].value = "";
     els[3].value = "";
-    els[4].value = "";
-    els[4].readOnly = true;
+    // els[4].value = "0";
+    // els[4].readOnly = true;
   }
 
   off(self) {
@@ -112,8 +112,8 @@ class TimeSheetComponent extends Component {
     els[1].value = "00:00";
     els[2].value = "00:00";
     els[3].value = "00:00";
-    els[4].value = "休暇一日";
-    els[4].readOnly = true;
+    // els[4].value = "休暇一日";
+    // els[4].readOnly = true;
   }
 
   fullfill(self) {
@@ -122,8 +122,8 @@ class TimeSheetComponent extends Component {
     els[1].value = "18:30";
     els[2].value = "1:00";
     els[3].value = "8:00";
-    els[4].value = "-";
-    els[4].readOnly = false;
+    // els[4].value = "-";
+    // els[4].readOnly = false;
 
     $(function () {
       let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');
