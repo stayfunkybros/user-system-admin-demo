@@ -122,7 +122,7 @@ class TimeSheetComponent extends Component {
     els[1].value = "18:30";
     els[2].value = "1:00";
     els[3].value = "8:00";
-    els[4].value = "";
+    els[4].value = "-";
     els[4].readOnly = false;
 
     $(function () {
