@@ -175,7 +175,7 @@
           let t = fd.t || '';
           let r = fd.r || '';
           let s = fd.s || '';
-          let m = fd.m || '';
+          let m = fd.m || '0';
           d.from = f, d.to = t, d.rest = r, d.total = s, d.memo = m;
         }
         calender.push(d);
@@ -196,13 +196,13 @@
     };
     $("#share").click(function share() {
       $('.date-line').each(function () {
-        // let d = $(this).find('input:hidden').first().val();
-        // if (d !== '8') {
+        let d = $(this).find('input:hidden').first().val();
+        if (d.length !== '8') {
           let tp = $(this).find(':input:not(:hidden)');
           let sfd = {};
           sfd.f = tp[0].value, sfd.t = tp[1].value, sfd.r = tp[2].value, sfd.s = tp[3].value, sfd.m = tp[4].value;
           formData[d] = sfd;
-        // }
+        }
       });
       let obj = formData;
       let shardLink = window.location.href.split('?')[0] + '?s=' + encodeJson(obj);
