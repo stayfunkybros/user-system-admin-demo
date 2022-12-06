@@ -122,7 +122,7 @@
     </main>
   </div>
   <div class="container sticky-bottom bg-white text-end" role="contentinfo">
-    <h6 class="h6">今月の勤務時間：<span id="month-total">0時間 0分</span>（標準：<span id="">0</span>時間）</h6>
+    <h6 class="h6">今月の勤務時間：<span id="month-total">0時間 0分</span>（標準：<span id="month-std">0</span>時間）</h6>
   </div>
   <footer class="mb-2 text-muted text-center text-small">
     <p class="mb-1" style="font-size: 0.6em">&copy; 2022 <a class="text-muted"
@@ -186,6 +186,8 @@
       })
 
       if (formData) { $(".bs-timepicker")[0].dispatchEvent(new Event("change")); }
+
+      document.getElementById('month-std').textContent = ($('tr.date-line').length - $('tr.text-primary').length - hd.length) * 8;
 
     }
   </script>

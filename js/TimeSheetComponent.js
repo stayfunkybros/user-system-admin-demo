@@ -5,7 +5,7 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapNext: 0 /* 0:修 1:削 2:休 */
+      swapNext: 0 /* 0:編 1:消 2:ー */
     };
   }
 
