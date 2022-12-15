@@ -5,7 +5,7 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapNext: 0 /* 0:編 1:休 2:削 */
+      swapNext: 0 /* 0:編集する 1:休日にする 2:削除する */
     };
   }
 
@@ -13,9 +13,9 @@ class TimeSheetComponent extends Component {
     this.setState({
       swapNext: (++this.state.swapNext) % 3
     });
-    if (this.state.swapNext === 0) { // clicked:2 -> 0
+    if (this.state.swapNext === 0) { // clicked:2 -> 0 削除ボタン押下
       this.erase(this.el);
-    } else if (this.state.swapNext === 1) { // clicked:0 -> 1
+    } else if (this.state.swapNext === 1) { // clicked:0 -> 1 編集ボタン押下
       this.fullfill(this.el);
     } else {
       this.off(this.el);
@@ -57,7 +57,7 @@ class TimeSheetComponent extends Component {
         class="form-control form-control-plaintext daily-total-times" 
         type="text" placeholder="hh:mm" value="${this.props.total || '00:00'}"></td>
       <td><select id="sth-else-${this.props.id}" class="form-select form-select-sm">
-        <option value="0" ${this.props.memo === '0' ? 'selected' : ''} >-</option>
+        <option value="0" ${this.props.memo === '0' ? 'selected' : ''} >なし</option>
         <option value="1" ${this.props.memo === '1' ? 'selected' : ''} >有休</option>
         <option value="2" ${this.props.memo === '2' ? 'selected' : ''} >振休</option>
         <option value="3" ${this.props.memo === '3' ? 'selected' : ''} >休出</option>
@@ -65,9 +65,9 @@ class TimeSheetComponent extends Component {
       <td>
         <button type="button" value="${this.state.swapNext}"
           class="btn btn-sm ${this.state.swapNext === 0 ?
-            'btn-success">編' : this.state.swapNext === 2 ?
-              'btn-danger">消' :
-              'btn-warning">休' }</button>
+            'btn-secondary">編' : this.state.swapNext === 2 ?
+              'btn-warning">休' :
+              'btn-success">勤' }</button>
       </div>
     </tr>
     </table>`;
