@@ -143,12 +143,12 @@
     p = p && p.replace(/\s/g, '+'); // TODO: Don't know why replaced, just fixed...
     let formData = p ? parseToken(p) : null;
     let curDate = (d => (d.length === 8) ? d : (new Date()).toISOString().slice(0, 10).replace(/-/g, ""))
-      ((formData && Object.keys(formData)[0]) || `${url.get('d') || ''}01`.substr(0, 8));
+      ((formData && Object.keys(formData)[0]) || ((url.get('d') || '') + '01').substr(0, 8));
     let curMonth = Number(curDate.substr(4, 2));
     let curYear = Number(curDate.substr(0, 4));
 
     const timesheet = document.querySelector('#time-sheet-area');
-    fetch(`https://holidays-jp.github.io/api/v1/${curYear}/date.json`)
+    fetch("https://holidays-jp.github.io/api/v1/" + curYear + "/date.json")
       .then(res => res.json())
       .then(holidays => initCal(holidays))
       .catch(err => alert('Initial Calander Getting ERROR:' + err));
@@ -159,12 +159,12 @@
       let d_Day = new Date(curYear, curMonth, 0);
       document.getElementById('curDateYM').textContent = d_Day.getFullYear() + '年' + (d_Day.getMonth() + 1) + '月';
       let dDm1m = new Date(curYear, curMonth - 1, 0);
-      document.getElementById('preDateYM').href = `./timesheet.html?d=${dDm1m.getFullYear()}${('0' + (dDm1m.getMonth() + 1)).substr(-2)}`;
+      document.getElementById('preDateYM').href = "./timesheet.html?d=" + dDm1m.getFullYear() + ('0' + (dDm1m.getMonth() + 1)).substr(-2);
 
       let days = d_Day.getDate();
       for (let i = 1; i <= days; i++) {
         let d = {};
-        d.id = `${curYear}-${('0' + curMonth).slice(-2)}-${('0' + i).slice(-2)}`;
+        d.id = curYear + '-' + (('0' + curMonth).slice(-2)) + '-' + (('0' + i).slice(-2));
         if (hd[d.id]) {
           d.isHoliday = true;
         }
