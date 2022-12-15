@@ -5,7 +5,7 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapNext: 0 /* 0:編 1:消 2:休 */
+      swapNext: 0 /* 0:編 1:休 2:削 */
     };
   }
 
@@ -14,11 +14,11 @@ class TimeSheetComponent extends Component {
       swapNext: (++this.state.swapNext) % 3
     });
     if (this.state.swapNext === 0) { // clicked:2 -> 0
-      this.off(this.el);
+      this.erase(this.el);
     } else if (this.state.swapNext === 1) { // clicked:0 -> 1
       this.fullfill(this.el);
     } else {
-      this.erase(this.el);
+      this.off(this.el);
     }
     this.reCalc(this.el);
   }
@@ -65,7 +65,7 @@ class TimeSheetComponent extends Component {
       <td>
         <button type="button" value="${this.state.swapNext}"
           class="btn btn-sm ${this.state.swapNext === 0 ?
-            'btn-success">編' : this.state.swapNext === 1 ?
+            'btn-success">編' : this.state.swapNext === 2 ?
               'btn-danger">消' :
               'btn-warning">休' }</button>
       </div>
@@ -105,8 +105,6 @@ class TimeSheetComponent extends Component {
     els[3].value = "";
     dl.querySelector("select option:checked").selected = false;
     dl.querySelector("select option[value='0']").selected = true;
-    // els[4].value = "0";
-    // els[4].readOnly = true;
   }
 
   off(self) {
@@ -118,8 +116,6 @@ class TimeSheetComponent extends Component {
     els[3].value = "00:00";
     dl.querySelector("select option:checked").selected = false;
     dl.querySelector("select option[value='1']").selected = true;
-    // els[4].value = "休暇一日";
-    // els[4].readOnly = true;
   }
 
   fullfill(self) {
@@ -129,8 +125,6 @@ class TimeSheetComponent extends Component {
     els[1].value = "18:30";
     els[2].value = "1:00";
     els[3].value = "8:00";
-    // els[4].value = "-";
-    // els[4].readOnly = false;
 
     $(function () {
       let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');
