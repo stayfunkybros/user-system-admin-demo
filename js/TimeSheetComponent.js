@@ -5,7 +5,7 @@ class TimeSheetComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapNext: 0 /* 0:編 1:消 2:ー */
+      swapNext: 0 /* 0:編 1:消 2:休 */
     };
   }
 
@@ -67,7 +67,7 @@ class TimeSheetComponent extends Component {
           class="btn btn-sm ${this.state.swapNext === 0 ?
             'btn-success">編' : this.state.swapNext === 1 ?
               'btn-danger">消' :
-              'btn-warning">ー' }</button>
+              'btn-warning">休' }</button>
       </div>
     </tr>
     </table>`;
@@ -97,27 +97,34 @@ class TimeSheetComponent extends Component {
   }
 
   erase(self) {
-    let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+    let dl = self.closest(".date-line");
+    let els = dl.querySelectorAll("input[type='text']");
     els[0].value = "";
     els[1].value = "";
     els[2].value = "";
     els[3].value = "";
+    dl.querySelector("select option:checked").selected = false;
+    dl.querySelector("select option[value='0']").selected = true;
     // els[4].value = "0";
     // els[4].readOnly = true;
   }
 
   off(self) {
-    let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+    let dl = self.closest(".date-line");
+    let els = dl.querySelectorAll("input[type='text']");
     els[0].value = "00:00";
     els[1].value = "00:00";
     els[2].value = "00:00";
     els[3].value = "00:00";
+    dl.querySelector("select option:checked").selected = false;
+    dl.querySelector("select option[value='1']").selected = true;
     // els[4].value = "休暇一日";
     // els[4].readOnly = true;
   }
 
   fullfill(self) {
-    let els = self.closest(".date-line").querySelectorAll("input[type='text']");
+    let dl = self.closest(".date-line");
+    let els = dl.querySelectorAll("input[type='text']");
     els[0].value = "9:30";
     els[1].value = "18:30";
     els[2].value = "1:00";
