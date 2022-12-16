@@ -94,6 +94,7 @@ class TimeSheetComponent extends Component {
       totals = totals + x(element.value.split(':'));
     });
     document.getElementById('month-total').textContent = t_fm(totals);
+    document.querySelector('input.month-total').value = totals / 60.0;
   }
 
   erase(self) {

@@ -123,6 +123,8 @@
   </div>
   <div class="container sticky-bottom bg-white text-end" role="contentinfo">
     <h6 class="h6">今月の勤務時間：<span id="month-total">0時間 0分</span>（標準：<span id="month-std">0</span>時間）</h6>
+    <input type="hidden" name="" class="month-total">
+    <input type="hidden" name="" class="month-std">
   </div>
   <footer class="mb-2 text-muted text-center text-small">
     <p class="mb-1" style="font-size: 0.6em">&copy; 2022 <a class="text-muted"
@@ -187,8 +189,10 @@
 
       if (formData) { $(".bs-timepicker")[0].dispatchEvent(new Event("change")); }
 
-      document.getElementById('month-std').textContent = 
-        ($('tr.date-line').length - $('tr.date-line.table-info.text-primary').length - $('tr.date-line.table-warning.text-danger').length) * 8;
+      let ms = ($('tr.date-line').length - $('tr.date-line.table-info.text-primary').length - $('tr.date-line.table-warning.text-danger').length) * 8;
+
+      document.getElementById('month-std').textContent = ms;
+      document.querySelector('input.month-std').value = ms;
       // let m0 = $(".memo-for-summary option[value='0']:checked").length;
       // let m1 = $(".memo-for-summary option[value='1']:checked").length;
       // let m2 = $(".memo-for-summary option[value='2']:checked").length;
