@@ -64,7 +64,7 @@ class TimeSheetComponent extends Component {
         </select></td>
       <td>
         <button type="button" value="${this.state.swapNext}"
-          class="btn btn-sm ${this.state.swapNext === 0 ?
+          class="btn-in-data-line btn btn-sm ${this.state.swapNext === 0 ?
             'btn-secondary">編' : this.state.swapNext === 2 ?
               'btn-warning">休' :
               'btn-success">勤' }</button>
