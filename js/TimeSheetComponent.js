@@ -46,16 +46,16 @@ class TimeSheetComponent extends Component {
       </td>
       <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" 
         class="form-control form-control-plaintext bs-timepicker" 
-        type="text" placeholder="hh:mm" value="${this.props.from || ''}"></td>
+        type="text" placeholder="" value="${this.props.from || ''}"></td>
       <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" 
         class="form-control form-control-plaintext bs-timepicker" 
-        type="text" placeholder="hh:mm" value="${this.props.to || ''}"></td>
+        type="text" placeholder="" value="${this.props.to || ''}"></td>
       <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" 
         class="form-control form-control-plaintext bs-timepicker" 
-        type="text" placeholder="hh:mm" value="${this.props.rest || ''}"></td>
+        type="text" placeholder="" value="${this.props.rest || ''}"></td>
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" 
         class="form-control form-control-plaintext daily-total-times" 
-        type="text" placeholder="hh:mm" value="${this.props.total || '00:00'}"></td>
+        type="text" placeholder="" value="${this.props.total || '00:00'}"></td>
       <td><select id="sth-else-${this.props.id}" class="form-select form-select-sm memo-for-summary">
         <option value="0" ${this.props.memo === '0' ? 'selected' : ''} >なし</option>
         <option value="1" ${this.props.memo === '1' ? 'selected' : ''} >有休</option>
