@@ -45,13 +45,13 @@ class TimeSheetComponent extends Component {
         <input id="${this.props.id}" name="date-today-${this.props.id}" class="form-control form-control-plaintext" type="hidden" value="${this.props.id}">
       </td>
       <td><input readonly id="start-time-${this.props.id}" name="start-time-${this.props.id}" 
-        class="form-control form-control-plaintext bs-timepicker border-input" 
+        class="form-control form-control-plaintext bs-timepicker border" 
         type="text" placeholder="" value="${this.props.from || ''}"></td>
       <td><input readonly id="end-time-${this.props.id}" name="end-time-${this.props.id}" 
-        class="form-control form-control-plaintext bs-timepicker border-input" 
+        class="form-control form-control-plaintext bs-timepicker border" 
         type="text" placeholder="" value="${this.props.to || ''}"></td>
       <td><input readonly id="rest-time-${this.props.id}" name="rest-time-${this.props.id}" 
-        class="form-control form-control-plaintext bs-timepicker border-input" 
+        class="form-control form-control-plaintext bs-timepicker border" 
         type="text" placeholder="" value="${this.props.rest || ''}"></td>
       <td><input readonly id="totals-per-day-${this.props.id}" name="totals-per-day-${this.props.id}" 
         class="form-control form-control-plaintext daily-total-times" 
