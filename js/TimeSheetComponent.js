@@ -122,10 +122,10 @@ class TimeSheetComponent extends Component {
   fullfill(self) {
     let dl = self.closest(".date-line");
     let els = dl.querySelectorAll("input[type='text']");
-    els[0].value = els[0].value == "" ? "9:30" : els[0].value;
-    els[1].value = els[1].value == "" ? "18:30" : els[1].value;
-    els[2].value = els[2].value == "" ? "1:00" : els[2].value;
-    els[3].value = els[3].value == "" ? "8:00" : els[3].value;
+    els[0].value = els[0].value == "" || els[0].value == "00:00" ? "9:30" : els[0].value;
+    els[1].value = els[1].value == "" || els[0].value == "00:00" ? "18:30" : els[1].value;
+    els[2].value = els[2].value == "" || els[0].value == "00:00" ? "1:00" : els[2].value;
+    els[3].value = els[3].value == "" || els[0].value == "00:00" ? "8:00" : els[3].value;
 
     $(function () {
       let tp = self.closest(".date-line").querySelectorAll('.bs-timepicker');
